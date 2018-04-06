@@ -60,11 +60,11 @@
     <Compile Include="AddStudent.Designer.cs">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetectAndAttandance.cs">
+    <Compile Include="DetectAndAttendance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DetectAndAttandance.Designer.cs">
-      <DependentUpon>DetectAndAttandance.cs</DependentUpon>
+    <Compile Include="DetectAndAttendance.Designer.cs">
+      <DependentUpon>DetectAndAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="EigenObjectRecognizer.cs" />
     <Compile Include="MAINGUI.cs">
@@ -78,8 +78,8 @@
     <EmbeddedResource Include="AddStudent.resx">
       <DependentUpon>AddStudent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DetectAndAttandance.resx">
-      <DependentUpon>DetectAndAttandance.cs</DependentUpon>
+    <EmbeddedResource Include="DetectAndAttendance.resx">
+      <DependentUpon>DetectAndAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MAINGUI.resx">
       <DependentUpon>MAINGUI.cs</DependentUpon>

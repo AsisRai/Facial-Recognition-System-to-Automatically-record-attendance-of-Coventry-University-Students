@@ -15,5 +15,5 @@ C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-recor
 C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\FRSystem_AsisRai\obj\Debug\FRSystem_AsisRai.exe
 C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\FRSystem_AsisRai\obj\Debug\FRSystem_AsisRai.pdb
 C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\FRSystem_AsisRai\obj\Debug\FRSystem_AsisRai.AddStudent.resources
-C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\FRSystem_AsisRai\obj\Debug\FRSystem_AsisRai.DetectAndAttandance.resources
 C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\FRSystem_AsisRai\obj\Debug\FRSystem_AsisRai.MAINGUI.resources
+C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\FRSystem_AsisRai\obj\Debug\FRSystem_AsisRai.DetectAndAttendance.resources

@@ -72,9 +72,9 @@ namespace FRSystem_AsisRai
         {
             //a. Resizing detected faces to grey scale images
             TrainedFace = result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            TrainedEyes = result2.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            TrainedMouth = result3.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            TrainedNose = result4.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            TrainedEyes = result2.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            TrainedMouth = result3.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            TrainedNose = result4.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
             //b. Image box to show the detected faces
             imageBox2.Image = TrainedFace;
             imageBox3.Image = TrainedEyes;
@@ -88,20 +88,30 @@ namespace FRSystem_AsisRai
             addtodatabase();
         }
 
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public AddStudent()
 		{
             //loading haarcascade file by file name and assining to haarcascade variable
+            //Load haarcascades for face detection
             face = new HaarCascade("haarcascade-frontalface-default.xml");
+            //Load haarcascades for eye detection
             eyes = new HaarCascade("haarcascade_mcs_eyepair_big.xml");
+            //Load haarcascades for mouth detection
             mouth = new HaarCascade("mouth.xml");
+            //Load haarcascades for nose detection
             nose = new HaarCascade("nose.xml");
 
 			InitializeComponent();
 
             try
             {
+                //Previous trained faces and labels for each image
                 string Labelsinfo = File.ReadAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt");
-                string[] Labels = Labelsinfo.Split('/');
+                string[] Labels = Labelsinfo.Split('%');
                 NumLabels = Convert.ToInt16(Labels[0]); //total number of faces detected 
                 ContTrain = NumLabels; //new images will be added to the previous set  
                 string LoadFaces;
@@ -116,7 +126,7 @@ namespace FRSystem_AsisRai
                     LoadMouth = "mouth" + tf + ".bmp";
                     LoadNose = "nose" + tf + ".bmp";
                     TrainedFace.Add(new Image<Gray, byte>(Application.StartupPath + "/TrainedFaces/" + LoadFaces));
-                    TrainedEyes.Add(new Image<Gray, byte>(Application.StartupPath + "/TrainedFaces/" + TrainedEyes));
+                    TrainedEyes.Add(new Image<Gray, byte>(Application.StartupPath + "/TrainedFaces/" + LoadEyes));
                     TrainedMouth.Add(new Image<Gray, byte>(Application.StartupPath + "/TrainedFaces/" + LoadMouth));
                     TrainedNose.Add(new Image<Gray, byte>(Application.StartupPath + "/TrainedFaces/" + LoadNose));
                     labels.Add(Labels[tf]);
@@ -127,7 +137,7 @@ namespace FRSystem_AsisRai
 
             catch (Exception e)
             {
-                MessageBox.Show("First Time, add some faces!");
+                MessageBox.Show("Press okay to continue");
             }
 
 		}
@@ -224,10 +234,10 @@ namespace FRSystem_AsisRai
 
             labels.Add(textBox1.Text);
             //write name of the detected person into list 
-            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages.ToArray().Length.ToString() + "/");
-            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages2.ToArray().Length.ToString() + "/");
-            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages3.ToArray().Length.ToString() + "/");
-            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages4.ToArray().Length.ToString() + "/");
+            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages.ToArray().Length.ToString() + "%");
+            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages2.ToArray().Length.ToString() + "%");
+            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages3.ToArray().Length.ToString() + "%");
+            File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages4.ToArray().Length.ToString() + "%");
 
             //write to files 
             for (int i = 1; i < detectedImages.ToArray().Length + 1; i++)
@@ -235,7 +245,7 @@ namespace FRSystem_AsisRai
                 //save faces to folder with name face(i) i being the name/number of the face detected
                 detectedImages.ToArray()[i - 1].Save(Application.StartupPath + "/TrainedFaces/face" + i + ".bmp");
                 //Saves name to text file
-                File.AppendAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", labels.ToArray()[i - 1] + "/");
+                File.AppendAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", labels.ToArray()[i - 1] + "%");
             }
 
             for (int i = 1; i < detectedImages2.ToArray().Length + 1; i++)

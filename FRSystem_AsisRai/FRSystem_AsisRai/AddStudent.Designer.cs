@@ -144,7 +144,7 @@
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Location = new System.Drawing.Point(576, 37);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(397, 288);
+            this.groupBox2.Size = new System.Drawing.Size(409, 288);
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Second Step";
@@ -152,7 +152,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(305, 156);
+            this.label6.Location = new System.Drawing.Point(330, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 18);
             this.label6.TabIndex = 23;
@@ -161,7 +161,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(234, 156);
+            this.label5.Location = new System.Drawing.Point(300, 156);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 18);
             this.label5.TabIndex = 22;
@@ -170,16 +170,17 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(163, 156);
+            this.label4.Location = new System.Drawing.Point(178, 156);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 18);
             this.label4.TabIndex = 21;
             this.label4.Text = "Eyes";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(65, 141);
+            this.label3.Location = new System.Drawing.Point(40, 156);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 18);
             this.label3.TabIndex = 20;
@@ -188,34 +189,34 @@
             // imageBox5
             // 
             this.imageBox5.BackColor = System.Drawing.Color.Transparent;
-            this.imageBox5.Location = new System.Drawing.Point(308, 186);
+            this.imageBox5.Location = new System.Drawing.Point(303, 41);
             this.imageBox5.Name = "imageBox5";
-            this.imageBox5.Size = new System.Drawing.Size(50, 50);
+            this.imageBox5.Size = new System.Drawing.Size(100, 100);
             this.imageBox5.TabIndex = 19;
             this.imageBox5.TabStop = false;
             // 
             // imageBox4
             // 
             this.imageBox4.BackColor = System.Drawing.Color.Transparent;
-            this.imageBox4.Location = new System.Drawing.Point(237, 186);
+            this.imageBox4.Location = new System.Drawing.Point(278, 182);
             this.imageBox4.Name = "imageBox4";
-            this.imageBox4.Size = new System.Drawing.Size(50, 50);
+            this.imageBox4.Size = new System.Drawing.Size(100, 100);
             this.imageBox4.TabIndex = 18;
             this.imageBox4.TabStop = false;
             // 
             // imageBox3
             // 
             this.imageBox3.BackColor = System.Drawing.Color.Transparent;
-            this.imageBox3.Location = new System.Drawing.Point(158, 186);
+            this.imageBox3.Location = new System.Drawing.Point(154, 182);
             this.imageBox3.Name = "imageBox3";
-            this.imageBox3.Size = new System.Drawing.Size(50, 50);
+            this.imageBox3.Size = new System.Drawing.Size(100, 100);
             this.imageBox3.TabIndex = 17;
             this.imageBox3.TabStop = false;
             // 
             // imageBox2
             // 
             this.imageBox2.BackColor = System.Drawing.Color.Transparent;
-            this.imageBox2.Location = new System.Drawing.Point(38, 165);
+            this.imageBox2.Location = new System.Drawing.Point(29, 182);
             this.imageBox2.Name = "imageBox2";
             this.imageBox2.Size = new System.Drawing.Size(100, 100);
             this.imageBox2.TabIndex = 16;
@@ -223,7 +224,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(68, 35);
+            this.button2.Location = new System.Drawing.Point(10, 39);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(282, 102);

@@ -104,6 +104,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.Name = "MAINGUI";
             this.Text = "MAINGUI";
+            this.Load += new System.EventHandler(this.MAINGUI_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
