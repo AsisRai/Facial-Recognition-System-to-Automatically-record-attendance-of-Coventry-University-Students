@@ -11,6 +11,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.CV.CvEnum;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace FRSystem_AsisRai
 {
@@ -27,7 +28,7 @@ namespace FRSystem_AsisRai
         MCvFont font = new MCvFont(FONT.CV_FONT_HERSHEY_TRIPLEX, 0.5d, 0.5d);
         //Initializing a list to save detected names of students
         List<string> NamePersons = new List<string>();
-        string name = null;
+        string name = null, names = null;
         int t, ContTrain, NumLabels;
 
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,16 +120,33 @@ namespace FRSystem_AsisRai
                     currentFrame.Draw(name, ref font, new Point(f.rect.X - 2, f.rect.Y - 2), new Bgr(Color.LightGreen));//initalize font for the name captured
 
                 }
+                
                 NamePersons[t - 1] = name;
                 NamePersons.Add("");
                 //check detected faces 
                 label5.Text = facesDetected[0].Length.ToString();
             }
+            t = 0;
+
+            //Names concatenation of persons recognized
+            for (int nnn = 0; nnn < facesDetected[0].Length; nnn++)
+            {
+                names = names + NamePersons[nnn] + ", ";
+                //MessageBox.Show(NamePersons[nnn]);
+
+                string test = NamePersons[nnn] + ",";
+
+                System.IO.File.AppendAllText("C:\\Users\\Trust\\Documents\\GitHub\\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\\FRSystem_AsisRai\\FRSystem_AsisRai\\Names\\names.txt", test);
+
+            }
             //load haarclassifier and previous saved images to find matches
             imageBox1.Image = currentFrame;
+            label3.Text = names;
+            names = "";
+            NamePersons.Clear();
+
         }
         
-
         private void DetectAndAttendance_Load(object sender, EventArgs e)
         {
 
