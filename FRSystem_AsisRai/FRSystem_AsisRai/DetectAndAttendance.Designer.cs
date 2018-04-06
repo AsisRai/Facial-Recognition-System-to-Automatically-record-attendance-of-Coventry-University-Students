@@ -120,12 +120,14 @@
             this.backToolStripMenuItem.Name = "backToolStripMenuItem";
             this.backToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.backToolStripMenuItem.Text = "Back";
+            this.backToolStripMenuItem.Click += new System.EventHandler(this.backToolStripMenuItem_Click);
             // 
             // closeProgramToolStripMenuItem
             // 
             this.closeProgramToolStripMenuItem.Name = "closeProgramToolStripMenuItem";
             this.closeProgramToolStripMenuItem.Size = new System.Drawing.Size(97, 20);
             this.closeProgramToolStripMenuItem.Text = "Close Program";
+            this.closeProgramToolStripMenuItem.Click += new System.EventHandler(this.closeProgramToolStripMenuItem_Click);
             // 
             // groupBox2
             // 
