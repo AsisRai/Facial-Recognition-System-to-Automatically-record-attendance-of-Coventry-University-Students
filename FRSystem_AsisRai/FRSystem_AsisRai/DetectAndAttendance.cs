@@ -30,6 +30,18 @@ namespace FRSystem_AsisRai
         string name = null;
         int t, ContTrain, NumLabels;
 
+        private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void backToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MAINGUI main = new MAINGUI();
+            main.Show();
+            this.Close();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             grabber = new Capture();
