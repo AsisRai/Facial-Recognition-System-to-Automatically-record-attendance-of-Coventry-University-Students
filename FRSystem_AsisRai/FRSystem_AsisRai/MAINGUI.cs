@@ -21,14 +21,19 @@ namespace FRSystem_AsisRai
         {
             AddStudent add = new AddStudent();
             add.Show();
-            this.Close();
+            this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DetectAndAttandance detect = new DetectAndAttandance();
+            DetectAndAttendance detect = new DetectAndAttendance();
             detect.Show();
             this.Hide();
+        }
+
+        private void MAINGUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
