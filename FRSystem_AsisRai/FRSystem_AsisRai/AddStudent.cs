@@ -46,6 +46,47 @@ namespace FRSystem_AsisRai
 
         int NumLabels,ContTrain=0;
 
+        private void backToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MAINGUI main = new MAINGUI();
+            main.Show();
+            this.Close();
+        }
+
+        private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e) //start camera button
+        {
+            grabber = new Capture(); //when click camera wil be opened
+            // 1.initializing the grabber event 
+            grabber.QueryFrame();
+            // 2.Now to capture the video 
+            Application.Idle += new EventHandler(FrameGrabber); //if the application is idel and the camera is on then call the frame grabber event 
+            // 3.initializing frame grabber 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e) //extract features button
+        {
+            //a. Resizing detected faces to grey scale images
+            TrainedFace = result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            TrainedEyes = result2.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            TrainedMouth = result3.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            TrainedNose = result4.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            //b. Image box to show the detected faces
+            imageBox2.Image = TrainedFace;
+            imageBox3.Image = TrainedEyes;
+            imageBox4.Image = TrainedMouth;
+            imageBox5.Image = TrainedNose;
+        }
+
+        private void button3_Click_1(object sender, EventArgs e) //save face button
+        {
+            extractfeatures();
+            addtodatabase();
+        }
 
         public AddStudent()
 		{
@@ -96,15 +137,9 @@ namespace FRSystem_AsisRai
 
         }
 
-        private void button1_Click(object sender, EventArgs e) //start camera button 
+        private void button1_Click(object sender, EventArgs e) 
         {
-            grabber = new Capture(); //when click camera wil be opened
-            // 1.initializing the grabber event 
-            grabber.QueryFrame();
-            // 2.Now to capture the video 
-            Application.Idle += new EventHandler(FrameGrabber); //if the application is idel and the camera is on then call the frame grabber event 
-            // 3.initializing frame grabber 
-
+            
         }
 
         private void addtodatabase() //adds to database
@@ -170,10 +205,9 @@ namespace FRSystem_AsisRai
             }
         }
 
-        private void button3_Click(object sender, EventArgs e) //save face button
+        private void button3_Click(object sender, EventArgs e) 
         {
-            extractfeatures();
-            addtodatabase();
+            
 
         }
 
@@ -231,18 +265,9 @@ namespace FRSystem_AsisRai
             //MessageBox.Show("Features saved to the database!");
         }
 
-        private void button2_Click(object sender, EventArgs e) //extacting features button
+        private void button2_Click(object sender, EventArgs e) 
         {
-            //a. Resizing detected faces to grey scale images
-            TrainedFace=result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            TrainedEyes = result2.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            TrainedMouth = result3.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            TrainedNose = result4.Resize(50, 50, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            //b. Image box to show the detected faces
-            imageBox2.Image = TrainedFace;
-            imageBox3.Image = TrainedEyes;
-            imageBox4.Image = TrainedMouth;
-            imageBox5.Image = TrainedNose;
+           
             
         }
 
