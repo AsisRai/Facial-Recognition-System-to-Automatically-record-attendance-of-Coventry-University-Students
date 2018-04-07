@@ -45,6 +45,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.resetAttendanceButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -191,6 +192,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.resetAttendanceButton);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Location = new System.Drawing.Point(549, 308);
             this.groupBox3.Name = "groupBox3";
@@ -198,6 +200,16 @@
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Optional";
+            // 
+            // resetAttendanceButton
+            // 
+            this.resetAttendanceButton.Location = new System.Drawing.Point(20, 40);
+            this.resetAttendanceButton.Name = "resetAttendanceButton";
+            this.resetAttendanceButton.Size = new System.Drawing.Size(128, 81);
+            this.resetAttendanceButton.TabIndex = 12;
+            this.resetAttendanceButton.Text = "Reset Attendance Taking";
+            this.resetAttendanceButton.UseVisualStyleBackColor = true;
+            this.resetAttendanceButton.Click += new System.EventHandler(this.resetAttendanceButton_Click);
             // 
             // DetectAndAttendance
             // 
@@ -244,5 +256,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button resetAttendanceButton;
     }
 }

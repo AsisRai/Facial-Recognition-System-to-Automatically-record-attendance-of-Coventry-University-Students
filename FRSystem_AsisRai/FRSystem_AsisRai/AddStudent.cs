@@ -92,6 +92,7 @@ namespace FRSystem_AsisRai
         {
 
         }
+        
 
         public AddStudent()
 		{
@@ -232,7 +233,7 @@ namespace FRSystem_AsisRai
             detectedImages3.Add(TrainedMouth);
             detectedImages4.Add(TrainedNose);
 
-            labels.Add(textBox1.Text);
+            labels.Add(textBox2.Text);
             //write name of the detected person into list 
             File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages.ToArray().Length.ToString() + "%");
             File.WriteAllText(Application.StartupPath + "/TrainedFaces/TrainedNames.txt", detectedImages2.ToArray().Length.ToString() + "%");
