@@ -31,6 +31,13 @@ namespace FRSystem_AsisRai
         string name = null, names = null;
         int t, ContTrain, NumLabels;
 
+        private HashSet<string> FacesAlreadyDetected = new HashSet<string>();
+
+        private void resetAttendanceButton_Click(object sender, EventArgs e)
+        {
+            FacesAlreadyDetected.Clear();
+        }
+
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
@@ -84,7 +91,7 @@ namespace FRSystem_AsisRai
             label5.Text = "0";
 
             //Get the current frame form capture device
-            currentFrame = grabber.QueryFrame().Resize(320, 240, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+            currentFrame = grabber.QueryFrame().Resize(501, 407, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
 
             //Convert it to Grayscale
             gray = currentFrame.Convert<Gray, Byte>();
@@ -96,6 +103,8 @@ namespace FRSystem_AsisRai
           10,
           Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING,
           new Size(20, 20));
+
+            
 
             //Action for each element detected
             foreach (MCvAvgComp f in facesDetected[0])
@@ -120,7 +129,14 @@ namespace FRSystem_AsisRai
                     currentFrame.Draw(name, ref font, new Point(f.rect.X - 2, f.rect.Y - 2), new Bgr(Color.LightGreen));//initalize font for the name captured
 
                 }
+
+                if (!FacesAlreadyDetected.Contains(name))
+                {
+                    SaveToDatabase(name, DateTime.Now);
+                    FacesAlreadyDetected.Add(name);
+                }
                 
+
                 NamePersons[t - 1] = name;
                 NamePersons.Add("");
                 //check detected faces 
@@ -145,6 +161,54 @@ namespace FRSystem_AsisRai
             names = "";
             NamePersons.Clear();
 
+        }
+
+        private void SaveToDatabase(string studentID, DateTime dateTime)
+        {
+            using (SqlConnection Connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\frsystem_database.mdf;Integrated Security=True;Connect Timeout=30"))
+            {
+                
+                try
+                {
+                    Connection.Open();
+
+                    SqlCommand getNameFromSID = new SqlCommand(@"SELECT name from STUDENT WHERE studentid=@studentid", Connection);
+                    getNameFromSID.Parameters.AddWithValue("@studentid", studentID);
+
+                    string studentName = string.Empty;
+
+                    using (SqlDataReader reader = getNameFromSID.ExecuteReader())
+                    {
+                        if (reader != null)
+                        {
+                            while (reader.Read())
+                            {
+                                studentName = reader["name"].ToString();
+                            }
+                        }
+                    }
+
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO attendance ([name],[studentid],[dateandtime]) VALUES (@name, @studentid, @datetime);", Connection);
+                    cmd.Parameters.AddWithValue("@name", studentName);
+                    cmd.Parameters.AddWithValue("@studentid", studentID);
+                    cmd.Parameters.AddWithValue("@datetime", dateTime);
+
+
+                    int i = cmd.ExecuteNonQuery();
+                    Connection.Close();
+
+                    if (i == 1)
+                    {
+                        MessageBox.Show($"Attendance Registered for {studentName}");
+                        
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unexpected Error has occured:" + ex.Message);
+
+                }
+            }
         }
         
         private void DetectAndAttendance_Load(object sender, EventArgs e)
