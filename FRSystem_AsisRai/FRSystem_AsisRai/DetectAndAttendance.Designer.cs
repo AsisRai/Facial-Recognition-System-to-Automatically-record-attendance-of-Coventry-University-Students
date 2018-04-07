@@ -39,18 +39,19 @@
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.resetAttendanceButton = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imageBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -88,7 +89,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Location = new System.Drawing.Point(754, 476);
+            this.label1.Location = new System.Drawing.Point(995, 571);
             this.label1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 18);
@@ -97,13 +98,14 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(166, 24);
+            this.button3.Location = new System.Drawing.Point(243, 143);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(262, 97);
             this.button3.TabIndex = 11;
             this.button3.Text = "3. View Attendance";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // menuStrip1
             // 
@@ -132,7 +134,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.button3);
+            this.groupBox2.Controls.Add(this.resetAttendanceButton);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
@@ -143,16 +146,6 @@
             this.groupBox2.TabIndex = 19;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Step 2";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(166, 139);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(262, 97);
-            this.button2.TabIndex = 15;
-            this.button2.Text = "2. Take Attendance";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -192,24 +185,31 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.resetAttendanceButton);
-            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Location = new System.Drawing.Point(549, 308);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(566, 149);
+            this.groupBox3.Size = new System.Drawing.Size(566, 255);
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Optional";
+            this.groupBox3.Text = "Attendance Display";
             // 
             // resetAttendanceButton
             // 
-            this.resetAttendanceButton.Location = new System.Drawing.Point(20, 40);
+            this.resetAttendanceButton.Location = new System.Drawing.Point(71, 159);
             this.resetAttendanceButton.Name = "resetAttendanceButton";
             this.resetAttendanceButton.Size = new System.Drawing.Size(128, 81);
             this.resetAttendanceButton.TabIndex = 12;
             this.resetAttendanceButton.Text = "Reset Attendance Taking";
             this.resetAttendanceButton.UseVisualStyleBackColor = true;
             this.resetAttendanceButton.Click += new System.EventHandler(this.resetAttendanceButton_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(7, 24);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(553, 225);
+            this.dataGridView1.TabIndex = 0;
             // 
             // DetectAndAttendance
             // 
@@ -234,6 +234,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,12 +251,12 @@
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem closeProgramToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button resetAttendanceButton;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
