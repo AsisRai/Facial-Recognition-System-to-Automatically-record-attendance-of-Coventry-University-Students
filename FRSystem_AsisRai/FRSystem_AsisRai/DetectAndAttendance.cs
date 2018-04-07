@@ -31,11 +31,28 @@ namespace FRSystem_AsisRai
         string name = null, names = null;
         int t, ContTrain, NumLabels;
 
+        SqlConnection con; //connection
+
         private HashSet<string> FacesAlreadyDetected = new HashSet<string>();
 
         private void resetAttendanceButton_Click(object sender, EventArgs e)
         {
             FacesAlreadyDetected.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Trust\Documents\GitHub\Facial-Recognition-System-to-Automatically-record-attendance-of-Coventry-University-Students\FRSystem_AsisRai\frsystem_database.mdf;Integrated Security=True;Connect Timeout=30");
+            SqlDataAdapter checkup = new SqlDataAdapter("SELECT * FROM attendance", con); //this will get all marked attendance from the database
+            DataTable sd = new DataTable();
+
+            checkup.Fill(sd);
+            dataGridView1.DataSource = sd;
+
+            DataTable sd1 = new DataTable();
+            sd1 = sd.DefaultView.ToTable(true, "name", "studentid", "dateandtime");
+
+            dataGridView1.DataSource = sd1;
         }
 
         private void closeProgramToolStripMenuItem_Click(object sender, EventArgs e)
